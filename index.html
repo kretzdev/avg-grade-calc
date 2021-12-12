@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediiCalc</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="sigla_fsega.jpg">
+</head>
+
+<body>
+    <a href="https://econ.ubbcluj.ro/">
+        <img class="logo" src="logofac.png" width="500px" style="max-width: 100%; justify-content: center;"
+            alt="FSEGA"></a>
+    <div class="top">
+        <p>Calculator medii semestrul 1</p>
+    </div>
+    <form id="calc-form">
+        <div class="top">
+            <label for="sel_materii">
+                <p>Alege materii:</p>
+            </label>
+            <select style="max-width:100%" name="sel_materii" id="sel_materii" onchange="selectMaterii()" multiple>
+                <option value="MAE">Matematici Aplicate in Economie</option>
+                <option value="MIC">Microeconomie</option>
+                <option value="MGM">Management</option>
+                <option value="FP">Finante Publice</option>
+                <option value="EE">Economie Europeana</option>
+                <option value="FS">Fundamentele Serviciilor</option>
+            </select>
+
+        </div>
+
+        <div class="materii" id="MAE">
+            <div style="width: 50%; display: inline-block;">
+                <a href="https://econ.elearning.ubbcluj.ro/moodle/course/view.php?id=3016">
+                    <p id="disc">Disciplina: Matematici Aplicate in Economie</p>
+                </a>
+                <label for="formula">
+                    <p>Alege formula de calcul:</p>
+                </label>
+                <select style="max-width:100%" name="formula" id="formula" onchange="selectMate()">
+                    <option value="1">
+                        <p>1/3 Nota SEMINAR + 2/3 Nota SESIUNE</p>
+                    </option>
+                    <option value="2">
+                        <p>1/3 Nota SEMINAR + 1/3 Nota PARTIAL +1/3 Nota SESIUNE</p>
+                    </option>
+                </select>
+                <h3 id="medieMAE"></h3>
+            </div>
+
+
+            <div id="output" style="width: 50%; display: inline-block;">
+
+                <div id="f1">
+
+                    <p>Nota Test 1: <input type="text" style="width: 50px" name="n1_1"></p>
+                    <p>Nota Test 2: <input type="text" style="width: 50px" name="n2_1"></p>
+                    <p>Nota Test 3: <input type="text" style="width: 50px" name="n3_1"></p>
+                    <p>Nota Sesiune: <input type="text" style="width: 50px" name="ns_1"></p>
+                    <button onclick="medieMateV1()" type="button" id="calc">Calculeaza media</button>
+                </div>
+                <div id="f2">
+                    <p>Nota Test 1: <input type="text" style="width: 50px" name="n1_2"></p>
+                    <p>Nota Test 2: <input type="text" style="width: 50px" name="n2_2"></p>
+                    <p>Nota Test 3: <input type="text" style="width: 50px" name="n3_2"></p>
+                    <p>Nota Partial: <input type="text" style="width: 50px" name="np_2"></p>
+                    <p>Nota Sesiune: <input type="text" style="width: 50px" name="ns_2"></p>
+
+                    <button onclick="medieMateV2()" type="button" id="calc">Calculeaza media</button>
+                </div>
+
+            </div>
+
+
+
+        </div>
+        <div class="materii" id="MIC">
+            <div style="width: 50%; display: inline-block; overflow: hidden;">
+                <a href="https://econ.elearning.ubbcluj.ro/moodle/course/view.php?id=2954">
+                    <p id="disc">Disciplina: Microeconomie</p>
+                </a>
+                <p>Formula de calcul:</p>
+                <p>1/10 Nota Seminar + 2/10 Nota Teste + 7/10 Nota Sesiune</p>
+                <h3 id="medieMIC"></h3>
+            </div>
+            <div id="output" style="width: 50%; display: inline-block;">
+                <p>Nota Seminar: <input type="text" style="width: 50px" name="nsm_3"></p>
+                <p>Nota Test 1: <input type="text" style="width: 50px" name="n1_3"></p>
+                <p>Nota Test 2: <input type="text" style="width: 50px" name="n2_3"></p>
+                <p>Nota Sesiune: <input type="text" style="width: 50px" name="ns_3"></p>
+                <button onclick="medieMicro()" type="button" id="calc">Calculeaza media</button>
+            </div>
+
+        </div>
+        <div class="materii" id="MGM">
+            <div style="width: 50%; display: inline-block;">
+                <a href="https://econ.elearning.ubbcluj.ro/moodle/course/view.php?id=3217">
+                    <p id="disc">Disciplina: Management</p>
+                </a>
+                <p>Formula de calcul:</p>
+                <p>1.5/10 Nota Curs + 2.5/10 Nota Seminar + <br> 5/10 Nota Sesiune + 1/10 Oficiu</p>
+                <h3 id="medieMGM"></h3>
+            </div>
+            <div id="output" style="width: 50%; display: inline-block;">
+                <p>Nota Curs: <input type="text" style="width: 50px" name="nc_4"></p>
+                <p>Nota Seminar: <input type="text" style="width: 50px" name="nsm_4"></p>
+                <p>Nota Sesiune: <input type="text" style="width: 50px" name="ns_4"></p>
+                <button onclick="medieMgm()" type="button" id="calc">Calculeaza media</button>
+            </div>
+
+        </div>
+
+        <div class="materii" id="FP">
+            <div style="width: 50%; display: inline-block;">
+                <a href="https://econ.elearning.ubbcluj.ro/moodle/course/view.php?id=2840">
+                    <p id="disc">Disciplina: Finante Publice</p>
+                </a>
+                <p>Formula de calcul:</p>
+                <p>2/10 Nota Seminar + 8/10 Nota Sesiune</p>
+                <h3 id="medieFP"></h3>
+            </div>
+            <div id="output" style="width: 50%; display: inline-block;">
+                <p>Nota Seminar: <input type="text" style="width: 50px" name="nsm_5"></p>
+                <p>Nota Sesiune: <input type="text" style="width: 50px" name="ns_5"></p>
+                <button onclick="medieFP()" type="button" id="calc">Calculeaza media</button>
+            </div>
+
+        </div>
+
+        <div class="materii" id="EE">
+            <div style="width: 50%; display: inline-block;">
+                <a href="https://econ.elearning.ubbcluj.ro/moodle/course/view.php?id=2966">
+                    <p id="disc">Disciplina: Economie Europeana</p>
+                </a>
+                <p>Formula de calcul:</p>
+                <p>1.5/10 Nota Test + 1.5/10 Nota Proiect + <br>7/10 Nota Sesiune</p>
+                <h3 id="medieEE"></h3>
+            </div>
+            <div id="output" style="width: 50%; display: inline-block;">
+                <p>Nota Test: <input type="text" style="width: 50px" name="n1_6"></p>
+                <p>Nota Proiect: <input type="text" style="width: 50px" name="np_6"></p>
+                <p>Nota Sesiune: <input type="text" style="width: 50px" name="ns_6"></p>
+                <button onclick="medieEE()" type="button" id="calc">Calculeaza media</button>
+            </div>
+
+        </div>
+
+        <div class="materii" id="FS">
+            <div style="width: 50%; display: inline-block; overflow: hidden;">
+                <a href="https://econ.elearning.ubbcluj.ro/moodle/course/view.php?id=3121">
+                    <p id="disc">Disciplina: Fundamentele Serviciilor</p>
+                </a>
+                <p>Formula de calcul:</p>
+                <p>3/10 Nota Proiect + 6/10 Nota Sesiune + 1/10 Oficiu</p>
+                <h3 id="medieFS"></h3>
+            </div>
+            <div id="output" style="width: 50%; display: inline-block;">
+                <p>Nota Proiect: <input type="text" style="width: 50px" name="np_7"></p>
+                <p>Nota Sesiune: <input type="text" style="width: 50px" name="ns_7"></p>
+                <button onclick="medieFS()" type="button" id="calc">Calculeaza media</button>
+            </div>
+
+        </div>
+        <div class="verify">
+            <p>
+                Verifica notele tale <br>
+                <a href="https://econ.elearning.ubbcluj.ro/moodle/my/">Moodle</a> &nbsp;&nbsp;&nbsp;
+                <a href="https://academicinfo.ubbcluj.ro/Info/Studenti.aspx">AcademicInfo</a>
+            </p>
+        </div>
+    </form>
+    <script src="app.js"></script>
+</body>
+
+</html>
